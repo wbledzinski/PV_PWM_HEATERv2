@@ -24,3 +24,16 @@ fp-info-cache
 # Exported BOM files
 *.xml
 *.csv
+
+History/
+Project Logs*/
+Project Outputs*/
+Launching*/
+*.xltx
+*.log
+*.WAS
+*.bak
+*.dat
+*.htm
+*.Cam
+

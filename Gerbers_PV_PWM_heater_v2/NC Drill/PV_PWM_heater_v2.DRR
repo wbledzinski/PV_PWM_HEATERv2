@@ -1,0 +1,34 @@
+----------------------------------------------------------------------------------------------------------------------------------
+NCDrill File Report For: PV_PWM_heater_v2.PcbDoc   12/21/2020  2:11:15 PM
+----------------------------------------------------------------------------------------------------------------------------------
+
+Layer Pair : Top Layer to Bottom Layer
+ASCII Plated RoundHoles File : PV_PWM_heater_v2-Plated.TXT
+ASCII Non-Plated RoundHoles File : PV_PWM_heater_v2-NonPlated.TXT
+EIA File   : PV_PWM_heater_v2.DRL
+
+Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
+----------------------------------------------------------------------------------------------------------------------------------
+T1      13mil (0.33mm)                                            Round             16        PTH        1.51inch (38.41mm)
+T2      20mil (0.508mm)                                           Round             48        PTH        23.37inch (593.53mm)
+T3      30mil (0.75mm)                                            Round             20        PTH        3.15inch (80.07mm)
+T4      30mil (0.762mm)                                           Round             12        PTH        2.98inch (75.69mm)
+T5      32mil (0.8mm)                                             Round             10        PTH        5.45inch (138.38mm)
+T6      33mil (0.85mm)                                            Round             10        PTH        4.23inch (107.41mm)
+T7      35mil (0.9mm)                                             Round             4         PTH        1.09inch (27.72mm)
+T8      40mil (1.016mm)                                           Round             18        PTH        8.30inch (210.87mm)
+T9      43mil (1.1mm)                                             Round             4         PTH        1.53inch (38.86mm)
+T10     47mil (1.2mm)                                             Round             19        PTH        14.74inch (374.32mm)
+T11     51mil (1.3mm)                                             Round             4         PTH        1.68inch (42.67mm)
+T12     55mil (1.4mm)                                             Round             17        PTH        11.05inch (280.69mm)
+T13     59mil (1.5mm)                                             Round             8         PTH        1.37inch (34.67mm)
+T14     63mil (1.6mm)                                             Round             22        PTH        10.00inch (254.08mm)
+T15     67mil (1.7mm)                                             Round             4         PTH        1.26inch (32.00mm)
+T16     98mil (2.5mm)                                             Round             4         PTH        2.65inch (67.25mm)
+T17     32mil (0.8mm)                                             Round             6         NPTH       0.41inch (10.50mm)
+T19     51mil (1.3mm)                                             Round             2         NPTH       0.39inch (10.00mm)
+T20     118mil (3mm)                                              Round             4         NPTH       17.16inch (435.87mm)
+----------------------------------------------------------------------------------------------------------------------------------
+Totals                                                                              232
+
+Total Processing Time (hh:mm:ss) : 00:00:00

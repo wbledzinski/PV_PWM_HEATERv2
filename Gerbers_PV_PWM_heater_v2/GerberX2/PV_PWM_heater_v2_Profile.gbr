@@ -1,0 +1,17 @@
+G04 Layer_Color=0*
+%FSLAX26Y26*%
+%MOIN*%
+%TF.FileFunction,Profile,NP*%
+%TF.Part,Single*%
+G01*
+G75*
+%TA.AperFunction,Profile*%
+%ADD170C,0.001000*%
+D170*
+X1350000Y1800000D02*
+Y5000000D01*
+X7342520D01*
+Y1800000D01*
+X1350000D01*
+%TF.MD5,34c22ab0abdee621a23b560631adccaa*%
+M02*

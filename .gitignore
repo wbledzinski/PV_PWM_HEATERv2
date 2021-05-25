@@ -25,6 +25,7 @@ fp-info-cache
 *.xml
 *.csv
 
+__Previews
 History/
 Project Logs*/
 Project Outputs*/

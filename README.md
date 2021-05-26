@@ -54,6 +54,6 @@ Sorry for choosen language but this is the exact part number that I used.
 https://www.egniazdka.pl/grzalka-do-bojlera-z-kolpakiem-eliko-grbk-3x2000w-u-64-p-1829.html
 
 https://www.ebay.de/itm/Hezspirale-Heizelement-Heizstab-6000-W-3x2000W-230-V-Abdeckung-/221984855525
-
+here similar solution, but only one channel
 
 

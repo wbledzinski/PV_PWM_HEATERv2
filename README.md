@@ -13,9 +13,9 @@ Below you can find schematic of the idea how to store small, medium and big amou
 ###  ◾ Overall concept - how to store 50kWh of energy in form of heat and why
 Some time ago I built heat buffer to collect and store heat from available heat sources. Basic concept was to store heat from buring coal or wood (furnace is more efficient working at full power and produces less air pollutants). Electric heaters were installed "just in case" of further development. Heat is used for heating whole house and tap water as well.
 
-Using PV array to produce heat sound as not particularly bright idea: during wintertime there is no enaugh sun weather to produce reasonable amount of energy (from PV array) to heat whole building.
+Using PV array to produce heat sounds as not particularly bright idea: during wintertime there is no enough sun weather to produce reasonable amount of energy (from PV array) to heat whole building (I live at 50* latitude in Europe).
 But summertime (autumn and spring usually as well) makes big difference. 5 people cannot use all heat produced by this system.
-So during summertime I use generated heat to fill small pool (500liters) for kids - already with warm water, no need to wait for warm-up, fresh and hot every day.
+So during summertime I use generated heat to fill small pool (500liters) for kids - already with warm water, no waiting to warm-up, fresh and hot water in pool every day.
 Also heat buffer is large enough that hot water stored from two sunny days lasts for next two days even if they are cloudy.
 schematic of that system below
 
@@ -25,24 +25,33 @@ schematic of that system below
 2. if there is clear sky, long sunny day AND there is already hot water in upper part of the tank then controller stops using upper heater and drives only the lower heater
 3. one heater (in form of serially connected two 230V 2kW heaters) can't put anough load to solar array. you need a bit more load so: in full sunshine upper heater works with 100% and lower just about 20% of possible load - only then you can mantain maximum power point (in my case somewhere ~360V DC).
 
-###  ◾ Theory of operation ('MPPT' tracking)
+###  ◾ MPPT Controller theory of operation ('MPPT' tracking)
 Generally speaking you can't connect heaters directly as a load into solar array. Or at least you can, but you will loose lot of energy.
 You can find lot of explanations why this is so.
 So you have to track maximum power point of your solar array, controllers that can do that are called MPPT and they are usually very expensive (although there is reason for that). I thought that there is no sense of converting DC energy into AC energy to power simple electric heater. So after small research ([see sample project from youtube]( https://www.youtube.com/watch?v=ciyA7mSo7IY)) i decided to built my own controller board.
 
+**Maximum-Power-Point-Tracking**
+To be clear: controller doesn't follow power point of solar array, it follows voltage. I added temperature correction (about 10V) that depends on temperature of NTC.
+In my case this NTC measures ambient temperature. To properly follow MPP of PV array you should measure temperature of PV array not ambient.
+in my opinion this solution is good enough but not perfect.
+Perfect solution should be based on microcontroller that calculates actual power not just voltage.
+
 **General idea is to use RC circuit to oscillate around MPP of solar array.**
 ![schema](/Photo/ideaofoperation.png)
-The issue was that array of that size produces 360VDC (disconnected even 440VDC) and almost 10A continuosly.
+Idea of RC oscillator (op-amp based) is pretty simple. The issue was that array of that size produces 360VDC (disconnected even 440VDC) and almost 10A continuosly.
 
 So some simulations and futher research was needed.
 Below you can find LTSpice simulation results for partially cloudy day (50% of PWM), just for simulation I set MPP at 330V.
 ![schema](/Photo/LTSPICE.png)
 
 green curve shows oscillations around MPP at 360VDC (actually it is set by potentiometer on the board).
-Hysteresis at 360V MPP was set to 5V..
+Hysteresis at 360V MPP was set to 5V.
 transistor connects the load (heater) and main capacitor acts as short-term energy source.
 Capacitor must withstand current of 10A so special low ESR capacitor is needed (4.7uF 630V DC 6mR from EPCOS)
 transistor must be good as well: any inductance produces voltage spikes that doubles overall voltage between drain and source. And even driving mosfet with 100% PWM makes thing hard because 10A current produces conductivity loses.
+
+Picture below shows Drain-Source voltage of SiC transistor (Infineon's IMZ120R030M1HXKSA1).
+![schema](/Photo/DS2_QuickPrint43.png)
 
 All in all I don't want to make here detailed description about part selection. Critical components are big cap and two transistors. Better check exact part numbers :-)
 If you wanna laugh at me then go ahead, but it was my intention to use LM324 just as proof that it can be reliable. It's just good enough for that role.

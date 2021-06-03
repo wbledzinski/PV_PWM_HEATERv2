@@ -20,6 +20,12 @@ Also heat buffer is large enough that hot water stored from two sunny days lasts
 schematic of that system below
 
 ![schema](/Photo/system_sch_diagram.png)
+
+![schema](/Photo/IMG_20210522_153757975_HDR.jpg)
+
+real photo of heat buffer
+
+
 ###  ◾ Why two heaters
 1. To make use of layered heat tank. If particular day is not excessively sunny then controller heats only upper part of the tank (200l of water).
 2. if there is clear sky, long sunny day AND there is already hot water in upper part of the tank then controller stops using upper heater and drives only the lower heater

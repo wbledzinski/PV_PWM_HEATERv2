@@ -84,7 +84,7 @@ My system has only one level of safety for every critical component.
 2. 2x NTC at heat buffer - to preven overheating/boiling water. But if NTC fails due to internal malfunction OR due to lack of sufficient thermal connection to tank OR if there is short on power transistor *there is no other security measure to preven overheating
 3. to prevent pressure build-up (in case of NTC failure or transistor malfunction ) that tank itself has an overflow port - it allows to escape if there is any excessive prese, no matter from water or from steam
 4. to prevent any burn due to very hot tap vater I installed hydraulic thermostat valve at buffer output, it is set to 55C
-5. 
+5. to prevent any bacteria to growth you can't store 1000l of tap water. Buffer has built-in heat exchanger in form of spiral copper pipe (copper itself is bacteriostatic), 20mm diameter, 50m long. Overall capacity is about 10liters. 1000l of water accumulates heat and never will be used for consumtion in any form.
 
 temperature limits for heaters are set (with hysteresis):
 testing original (designed) resistor values:

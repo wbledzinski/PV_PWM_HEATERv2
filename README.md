@@ -79,10 +79,6 @@ My system has only one level of safety for every critical component.
 3. to prevent pressure build-up (in case of NTC failure or transistor malfunction ) that tank itself has an overflow port - it allows to escape if there is any excessive prese, no matter from water or from steam
 4. to prevent any burn due to very hot tap vater I installed heat regulating valve at buffer output, it is set to 55C
 
-### Similar solution
-https://www.ebay.de/itm/Hezspirale-Heizelement-Heizstab-6000-W-3x2000W-230-V-Abdeckung-/221984855525
-here similar solution, but with only one channel , smaller voltage (for smaller PV array)
-
 ###  ◾ Main components
 Sorry for choosen language but this is the exact part number that I used.
 heater
@@ -94,9 +90,20 @@ https://pl.farnell.com/infineon/imz120r030m1hxksa1/mosfet-n-ch-1-2kv-56a-175deg-
 DCDC converter
 https://pl.farnell.com/recom-power/rac10-12sk-277/power-supply-ac-dc-12v-0-84a/dp/2822840
 
+### ◾ Similar solution
+https://www.ebay.de/itm/Hezspirale-Heizelement-Heizstab-6000-W-3x2000W-230-V-Abdeckung-/221984855525
+here similar solution, but with only one channel , smaller voltage (for smaller PV array)
+
 ###  ◾ BOM cost
 I had to build two versions + during testing I burned one transistor (due to DC arc) so this was not completely cheap project.
 but properly assembled ona piece of that board should cost you about:
 * PCB JLCPCB $20
 * main transistors, capacitor, DCDC converter other major components about $100
 
+I hope you enjoy this project, I'm sure that furher development should use microcontroller to properly control MPPT of solar array.
+For me most important part is that I developed high voltage power stage of that controller, further development using any of popular microcontroller seems less stresfull during launch (leaving that installation for a week without supervision really maked me stressed, I imagined firefighters in place several times).
+As for now it works without any flaws.
+Do not hesitate to reach me in case on any questions,
+br,
+
+Wojtek

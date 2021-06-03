@@ -38,7 +38,7 @@ Perfect solution should be based on microcontroller that calculates actual power
 
 **General idea is to use RC circuit to oscillate around MPP of solar array.**
 ![schema](/Photo/ideaofoperation.png)
-Idea of RC oscillator (op-amp based) is pretty simple. The issue was that array of that size produces 360VDC (disconnected even 440VDC) and almost 10A continuosly.
+Idea of RC oscillator (op-amp based) is pretty simple. The issue was that array of that size produces 360VDC (disconnected even 440VDC) and almost 10A continuosly: RC oscillators usually have much less power.
 
 So some simulations and futher research was needed.
 Below you can find LTSpice simulation results for partially cloudy day (50% of PWM), just for simulation I set MPP at 330V.
@@ -53,16 +53,50 @@ transistor must be good as well: any inductance produces voltage spikes that dou
 Picture below shows Drain-Source voltage of SiC transistor (Infineon's IMZ120R030M1HXKSA1).
 ![schema](/Photo/DS2_QuickPrint43.png)
 
-All in all I don't want to make here detailed description about part selection. Critical components are big cap and two transistors. Better check exact part numbers :-)
-If you wanna laugh at me then go ahead, but it was my intention to use LM324 just as proof that it can be reliable. It's just good enough for that role.
+###  ◾ Actual idea of operation for this controller
+All in all I don't want to make here detailed description about part selection. Critical components are big cap and two power transistors. I tested Infineons SiC parts IMZ120R030M1HXKSA1 and IMZ120R045M1XKSA1 toogether with EPCOS B32674D6475K000 4u7 and B32774D8126K000 12uF (big cap gives acoustic noise due to low frequency of operation BUT low frequency generates less commuting loses).
 
+#### voltage set point
 
-if there is already hot water in the tank sunny weather continues for several days or you went somewere for holidays then controller stops driving both heaters and gives signal
+high priority heater (upper one) has circuit with mean voltage operation set point around 350VDC.
 
-Sorry for choosen language but this is the exact part number that I used.
-https://www.egniazdka.pl/grzalka-do-bojlera-z-kolpakiem-eliko-grbk-3x2000w-u-64-p-1829.html
+the lower priority heater has voltage set-point 10V higher ~360V DC.
 
+In case of partial sun/low energy producing PV array (due to low sun early in the morning, or due to cluds) controller uses only high pririty heater (upper in the heat buffer) and operates around 350V DC.
+
+When PV array produces more than 2,5kW of power one heater (~52ohm) cann't operate at MPP for PV array - voltage raises even to 380VDC. No problem for the heater but operating at that high voltage is out of MPP for my arrray.
+So there comes into action second heater with second (10V higher) voltage set-point:
+upper heater is driven 100% PWM, and second (physically lower in heat buffer) heater is driven with PWM that enables PV to operate at 360V DC.
+PV array can then operate at voltage point close to MPP.
+
+if there is already hot water in the tank AND sunny weather continues the controller stops driving both heaters and gives signal thru optocouplers: you can use that to control classic grid inverter to generate electricity and return that to the grid. But heaters have priority in that case and energy can be sent to grid only when there is no need for generatin more heat.
+
+###  ◾ Safety of operation
+there is no strict SIL biult-in in that controller. I would recommend some double security to preven fire (due to overheating of electronics itself) or to prefent pressure biuldup in heater tank (in case of NTC failure).
+My system has only one level of safety for every critical component.
+1. thermostat for transistor heatsink - over 100C it disconnects voltage sensing - controller stops operation
+2. 2x NTC at heat buffer - to preven overheating/boiling water. But if NTC fails due to internal malfunction OR due to lack of sufficient thermal connection to tank OR if there is short on power transistor *there is no other security measure to preven overheating
+3. to prevent pressure build-up (in case of NTC failure or transistor malfunction ) that tank itself has an overflow port - it allows to escape if there is any excessive prese, no matter from water or from steam
+4. to prevent any burn due to very hot tap vater I installed heat regulating valve at buffer output, it is set to 55C
+
+### Similar solution
 https://www.ebay.de/itm/Hezspirale-Heizelement-Heizstab-6000-W-3x2000W-230-V-Abdeckung-/221984855525
-here similar solution, but only one channel
+here similar solution, but with only one channel , smaller voltage (for smaller PV array)
 
+###  ◾ Main components
+Sorry for choosen language but this is the exact part number that I used.
+heater
+https://www.egniazdka.pl/grzalka-do-bojlera-z-kolpakiem-eliko-grbk-3x2000w-u-64-p-1829.html
+low ESR capacitor
+https://pl.farnell.com/epcos/b32674d6475k000/cap-4-7-f-630v-10-pp/dp/2728560
+SiC transistor
+https://pl.farnell.com/infineon/imz120r030m1hxksa1/mosfet-n-ch-1-2kv-56a-175deg-c/dp/3223684
+DCDC converter
+https://pl.farnell.com/recom-power/rac10-12sk-277/power-supply-ac-dc-12v-0-84a/dp/2822840
+
+###  ◾ BOM cost
+I had to build two versions + during testing I burned one transistor (due to DC arc) so this was not completely cheap project.
+but properly assembled ona piece of that board should cost you about:
+* PCB JLCPCB $20
+* main transistors, capacitor, DCDC converter other major components about $100
 

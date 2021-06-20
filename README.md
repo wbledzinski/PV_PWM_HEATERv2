@@ -132,8 +132,10 @@ Only one uncommon thing about assembly. All SMD components were soldered using s
 ###  ◾ Launching
 Durnig launching you have to set voltage operating points near maximum power point of your PV array - by setting both potentiometers.
 I've checked temperatures during operation, picture below shows board temperatures during hot sunny day, current from PV array ~8A, PV temperature ~40degC.
-During sunny but cold day when PV array is cold (say 0degC) current reaches even 11A (more than nominal specified by manufacturer of my panels (320W longi)
-actuall I had no issues during launching whatsoever.
+Power transistors (natural convection) has ~50degC.
+During sunny but cold day when PV array is cold (say 0degC) current reaches even 11A (more than nominal specified by manufacturer of my panels (320W longi).
+
+Actually I had no issues during launching whatsoever.
 
 ![schema](/Photo/FLIR1234.jpg)
 

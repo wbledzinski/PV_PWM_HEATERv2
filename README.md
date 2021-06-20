@@ -77,7 +77,7 @@ PV array can then operate at voltage point close to MPP.
 
 if there is already hot water in the tank AND sunny weather continues the controller stops driving both heaters and gives signal thru optocouplers: you can use that to control classic grid inverter to generate electricity and return that to the grid. But heaters have priority in that case and energy can be sent to grid only when there is no need for generatin more heat.
 
-###  ◾ Safety of electric and hydraulic system
+###  ◾ Safety of electric and hydraulic systems
 there is no strict SIL biult-in in that controller. I would recommend some double security to preven fire (due to overheating of electronics itself) or to prefent pressure biuldup in heater tank (in case of NTC failure).
 My system has only one level of safety for every critical component.
 1. thermostat for transistor heatsink - over 100C it disconnects voltage sensing - controller stops operation
@@ -128,6 +128,13 @@ Only one uncommon thing about assembly. All SMD components were soldered using s
 ![schema](/Photo/20210222_102626.jpg)
 ![schema](/Photo/20210222_104524.jpg)
 ![schema](/Photo/20210222_125613.jpg)
+
+###  ◾ Launching
+Durnig launching you have to set voltage operating points near maximum power point of your PV array - by setting both potentiometers.
+I've checked temperatures during operation, picture below shows board temperatures during hot sunny day, current from PV array ~8A, PV temperature ~40degC.
+During sunny but cold day when PV array is cold (say 0degC) current reaches even 11A (more than nominal specified by manufacturer of my panels (320W longi)
+actuall I had no issues during launching whatsoever.
+![schema](/Photo/FLIR1234.jpg)
 
 ###  ◾ Summary
 I hope you enjoy this project. I'm sure that furher development should use microcontroller to properly control MPPT of solar array.

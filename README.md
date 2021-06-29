@@ -1,5 +1,6 @@
 # PV_PWM_HEATERv2
-photovoltaic MPPT controller for heat buffer
+photovoltaic MPPT electric heater controller for heat buffer
+
 ## MPPT PWM 400V DC 10A heater controller board
 
 ![schema](/Photo/assy2.jpg)
